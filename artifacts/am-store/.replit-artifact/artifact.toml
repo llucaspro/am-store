@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "AM Store"
+version = "1.0.0"
+id = "artifacts/am-store"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25953
+
+[services.development]
+run = "pnpm --filter @workspace/am-store run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/am-store", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/am-store/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25953"
+BASE_PATH = "/"
