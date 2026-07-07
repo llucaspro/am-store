@@ -48,7 +48,7 @@ export function GeometricGarment() {
       polar={[-0.4, 0.2]}
       azimuth={[-1, 0.75]}
       config={{ mass: 2, tension: 400 }}
-      snap={{ mass: 4, tension: 400 }}
+      snap={true}
     >
       <group ref={groupRef}>
         <Float
@@ -158,7 +158,7 @@ export function ThreeScene() {
       
       <GeometricGarment />
       
-      <EffectComposer disableNormalPass>
+      <EffectComposer enableNormalPass={false}>
         <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} height={300} intensity={1.5} />
       </EffectComposer>
     </>
