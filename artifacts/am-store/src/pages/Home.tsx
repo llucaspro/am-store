@@ -8,31 +8,31 @@ import { ThreeScene } from '@/components/ThreeScene';
 
 import { Shield, Truck, Clock, Diamond } from 'lucide-react';
 
-import heroImg from '@assets/hero.jpg';
+import heroImg from '@/assets/hero.jpg';
 import logoImg from '@assets/709737226_18084092231149564_1279338615928384912_n_1783384802471.jpg';
 
 // Categories
-import catTshirt from '@assets/cat-tshirt.jpg';
-import catShirt from '@assets/cat-shirt.jpg';
-import catPants from '@assets/cat-pants.jpg';
-import catSneakers from '@assets/cat-sneakers.jpg';
-import catAcc from '@assets/cat-accessories.jpg';
+import catTshirt from '@/assets/cat-tshirt.jpg';
+import catShirt from '@/assets/cat-shirt.jpg';
+import catPants from '@/assets/cat-pants.jpg';
+import catSneakers from '@/assets/cat-sneakers.jpg';
+import catAcc from '@/assets/cat-accessories.jpg';
 
 // Featured
-import feat1 from '@assets/feat-1.jpg';
-import feat2 from '@assets/feat-2.jpg';
-import feat3 from '@assets/feat-3.jpg';
-import feat4 from '@assets/feat-4.jpg';
-import feat5 from '@assets/feat-5.jpg';
-import feat6 from '@assets/feat-6.jpg';
+import feat1 from '@/assets/feat-1.jpg';
+import feat2 from '@/assets/feat-2.jpg';
+import feat3 from '@/assets/feat-3.jpg';
+import feat4 from '@/assets/feat-4.jpg';
+import feat5 from '@/assets/feat-5.jpg';
+import feat6 from '@/assets/feat-6.jpg';
 
 // Instagram
-import insta1 from '@assets/insta-1.jpg';
-import insta2 from '@assets/insta-2.jpg';
-import insta3 from '@assets/insta-3.jpg';
-import insta4 from '@assets/insta-4.jpg';
-import insta5 from '@assets/insta-5.jpg';
-import insta6 from '@assets/insta-6.jpg';
+import insta1 from '@/assets/insta-1.jpg';
+import insta2 from '@/assets/insta-2.jpg';
+import insta3 from '@/assets/insta-3.jpg';
+import insta4 from '@/assets/insta-4.jpg';
+import insta5 from '@/assets/insta-5.jpg';
+import insta6 from '@/assets/insta-6.jpg';
 
 const categories = [
   { name: 'Camisetas', img: catTshirt },

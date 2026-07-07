@@ -176,6 +176,9 @@ importers:
       '@react-three/fiber':
         specifier: ^9.6.1
         version: 9.6.1(@types/react@19.2.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.185.1)
+      '@react-three/postprocessing':
+        specifier: ^3.0.4
+        version: 3.0.4(@react-three/fiber@9.6.1(@types/react@19.2.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.185.1))(@types/three@0.185.0)(react@19.1.0)(three@0.185.1)
       '@types/three':
         specifier: ^0.185.0
         version: 0.185.0
@@ -1538,6 +1541,13 @@ packages:
       react-native:
         optional: true
 
+  '@react-three/postprocessing@3.0.4':
+    resolution: {integrity: sha512-e4+F5xtudDYvhxx3y0NtWXpZbwvQ0x1zdOXWTbXMK6fFLVDd4qucN90YaaStanZGS4Bd5siQm0lGL/5ogf8iDQ==}
+    peerDependencies:
+      '@react-three/fiber': ^9.0.0
+      react: ^19.0
+      three: '>= 0.156.0'
+
   '@replit/connectors-sdk@0.4.1':
     resolution: {integrity: sha512-iw0uy95+Qul8MPc/bBo8hBfYk1wm6RpBZ9sHyCpcA9A9T4zcUT9deSQxdyMyI0w3sv3+5uGmdfq1TpFTMrjD1g==}
 
@@ -2555,6 +2565,12 @@ packages:
       '@types/three': '>=0.134.0'
       three: '>=0.134.0'
 
+  maath@0.6.0:
+    resolution: {integrity: sha512-dSb2xQuP7vDnaYqfoKzlApeRcR2xtN8/f7WV/TMAkBC8552TwTLtOO0JTcSygkYMjNDPoo6V01jTw/aPi4JrMw==}
+    peerDependencies:
+      '@types/three': '>=0.144.0'
+      three: '>=0.144.0'
+
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
@@ -2622,6 +2638,12 @@ packages:
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+
+  n8ao@1.10.2:
+    resolution: {integrity: sha512-gh4i0xFP8DiRaNoX75kPiG3kGl7PmX9SW/OIn3Sv/YZmHrA8faLdSU1MM6M4gKtfKpxDnZagodu8FKob5URCVw==}
+    peerDependencies:
+      postprocessing: '>=6.30.0'
+      three: '>=0.137'
 
   nanoid@3.3.14:
     resolution: {integrity: sha512-U9kYi5bpVMEI31yC8iw4bJJp0avcHXA0W8/wNfLfnvJYzihQo2ZRPYPvpAAd570HAcCBjCTN7vnr+v4StKl1IQ==}
@@ -2793,6 +2815,11 @@ packages:
   postgres-interval@1.2.0:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
+
+  postprocessing@6.39.2:
+    resolution: {integrity: sha512-AxPY+xFyVOsz+8bbHSyQBoOK4AUqSQspTXXIsNcKhmGJRm/afHRAwZ8bKC02AeSPII0PW6lbCN84SgAoWFsKKA==}
+    peerDependencies:
+      three: '>= 0.168.0 < 0.186.0'
 
   potpack@1.0.2:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
@@ -4426,6 +4453,17 @@ snapshots:
       - '@types/react'
       - immer
 
+  '@react-three/postprocessing@3.0.4(@react-three/fiber@9.6.1(@types/react@19.2.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.185.1))(@types/three@0.185.0)(react@19.1.0)(three@0.185.1)':
+    dependencies:
+      '@react-three/fiber': 9.6.1(@types/react@19.2.17)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.185.1)
+      maath: 0.6.0(@types/three@0.185.0)(three@0.185.1)
+      n8ao: 1.10.2(postprocessing@6.39.2(three@0.185.1))(three@0.185.1)
+      postprocessing: 6.39.2(three@0.185.1)
+      react: 19.1.0
+      three: 0.185.1
+    transitivePeerDependencies:
+      - '@types/three'
+
   '@replit/connectors-sdk@0.4.1': {}
 
   '@replit/vite-plugin-cartographer@0.5.21':
@@ -5328,6 +5366,11 @@ snapshots:
       '@types/three': 0.185.0
       three: 0.185.1
 
+  maath@0.6.0(@types/three@0.185.0)(three@0.185.1):
+    dependencies:
+      '@types/three': 0.185.0
+      three: 0.185.1
+
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -5385,6 +5428,11 @@ snapshots:
   motion-utils@12.39.0: {}
 
   ms@2.1.3: {}
+
+  n8ao@1.10.2(postprocessing@6.39.2(three@0.185.1))(three@0.185.1):
+    dependencies:
+      postprocessing: 6.39.2(three@0.185.1)
+      three: 0.185.1
 
   nanoid@3.3.14: {}
 
@@ -5583,6 +5631,10 @@ snapshots:
   postgres-interval@1.2.0:
     dependencies:
       xtend: 4.0.2
+
+  postprocessing@6.39.2(three@0.185.1):
+    dependencies:
+      three: 0.185.1
 
   potpack@1.0.2: {}
 

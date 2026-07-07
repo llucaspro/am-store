@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Store — Moda Masculina com Presença</title>
+<meta name="description" content="AM Store — moda masculina de alto padrão. Camisetas, camisas, calças, tênis e acessórios selecionados para homens que valorizam estilo, qualidade e personalidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   AM STORE — DESIGN SYSTEM
+   Tokens: onyx (preto quente) + ouro antigo (dourado metálico)
+   Assinatura visual: "costura dourada" — uma linha fina de ouro que
+   funciona como fio condutor entre as seções, remetendo à alfaiataria
+   e à ideia de qualidade/acabamento do produto.
+   =================================================================== */
+
+:root{
+  --onyx:        #0b0b0a;
+  --onyx-2:      #131210;
+  --onyx-3:      #1c1a17;
+  --line:        #2c2924;
+  --gold:        #c6a15b;
+  --gold-bright: #e9c877;
+  --gold-deep:   #7c5e2e;
+  --ivory:       #f4f1ea;
+  --stone:       #9c968a;
+
+  --radius-sm: 10px;
+  --radius:    14px;
+  --radius-lg: 16px;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-head:    'Montserrat', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --container: 1240px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--onyx);
+  color:var(--ivory);
+  font-family:var(--font-body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; margin:0; padding:0; }
+button{ font-family:inherit; cursor:pointer; }
+h1,h2,h3,p{ margin:0; }
+
+::selection{ background:var(--gold); color:var(--onyx); }
+
+:focus-visible{
+  outline:2px solid var(--gold-bright);
+  outline-offset:3px;
+}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:24px;
+}
+
+@media (min-width:768px){
+  .container{ padding-inline:40px; }
+}
+
+/* ---------- utilities ---------- */
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--font-body);
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+}
+.eyebrow::before{
+  content:'';
+  display:block;
+  width:28px;
+  height:1px;
+  background:var(--gold);
+}
+
+.section{ padding:100px 0; position:relative; }
+.section--alt{ background:var(--onyx-2); }
+@media (max-width:768px){ .section{ padding:64px 0; } }
+
+.section__head{
+  max-width:640px;
+  margin-bottom:56px;
+}
+.section__head.center{
+  max-width:640px;
+  margin-inline:auto;
+  text-align:center;
+}
+.section__head.center .eyebrow{ justify-content:center; }
+.section__head.center .eyebrow::before{ display:none; }
+
+.section__title{
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:clamp(1.9rem,3.4vw,2.7rem);
+  letter-spacing:-.01em;
+  color:var(--ivory);
+}
+
+.stitch{
+  width:96px;
+  height:1px;
+  margin:0 auto 28px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 10px,transparent 10px 16px);
+  position:relative;
+}
+.stitch::after{
+  content:'';
+  position:absolute;
+  left:50%; top:50%;
+  width:6px; height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  box-shadow:0 0 12px 2px rgba(198,161,91,.55);
+}
+
+/* ---------- buttons ---------- */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px 34px;
+  font-family:var(--font-body);
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  border-radius:var(--radius-sm);
+  border:1px solid transparent;
+  transition:all .35s var(--ease);
+  white-space:nowrap;
+}
+.btn--primary{
+  background:var(--onyx);
+  border-color:var(--gold);
+  color:var(--gold-bright);
+}
+.btn--primary:hover{
+  background:var(--gold);
+  color:var(--onyx);
+  box-shadow:0 0 0 1px var(--gold), 0 8px 30px -6px rgba(198,161,91,.55);
+  transform:translateY(-2px);
+}
+.btn--ghost{
+  background:transparent;
+  border-color:var(--line);
+  color:var(--ivory);
+}
+.btn--ghost:hover{
+  border-color:var(--gold);
+  color:var(--gold-bright);
+}
+.btn--sm{ padding:11px 22px; font-size:.72rem; }
+.btn--block{ width:100%; }
+
+.icon{ width:19px; height:19px; flex-shrink:0; }
+.icon-sm{ width:15px; height:15px; }
+
+/* =================================================================
+   TOPBAR
+   ================================================================= */
+.topbar{
+  background:#000;
+  border-bottom:1px solid var(--line);
+  font-size:.72rem;
+  letter-spacing:.06em;
+  color:var(--stone);
+}
+.topbar__row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:9px 24px;
+  text-align:center;
+  flex-wrap:wrap;
+}
+.topbar__row span:nth-child(2),
+.topbar__row span:nth-child(3){ display:none; }
+@media (min-width:640px){
+  .topbar__row{ justify-content:space-between; }
+  .topbar__row span:nth-child(2),
+  .topbar__row span:nth-child(3){ display:inline; }
+}
+.topbar__row a:hover{ color:var(--gold-bright); }
+.topbar__links{ display:flex; gap:20px; }
+
+/* =================================================================
+   HEADER / NAV
+   ================================================================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s var(--ease);
+}
+.header.is-scrolled{
+  background:rgba(11,11,10,.78);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-color:var(--line);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 0;
+}
+.nav__links{
+  display:none;
+  gap:34px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.12em;
+}
+.nav__links a{
+  position:relative;
+  padding-bottom:6px;
+}
+.nav__links a::after{
+  content:'';
+  position:absolute;
+  left:0; bottom:0;
+  width:100%; height:1px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.nav__links a:hover::after{ transform:scaleX(1); }
+.nav__links a:hover{ color:var(--gold-bright); }
+
+.nav__logo{
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:1.35rem;
+  letter-spacing:.14em;
+  position:relative;
+  padding-bottom:4px;
+}
+.nav__logo span{ color:var(--gold); }
+
+.nav__actions{ display:flex; align-items:center; gap:6px; }
+.icon-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px; height:38px;
+  background:transparent;
+  border:none;
+  color:var(--ivory);
+  border-radius:50%;
+  transition:color .25s, background .25s;
+}
+.icon-btn:hover{ color:var(--gold-bright); background:rgba(198,161,91,.08); }
+.icon-btn .badge{
+  position:absolute;
+  top:1px; right:1px;
+  width:15px; height:15px;
+  background:var(--gold);
+  color:var(--onyx);
+  font-size:.6rem;
+  font-weight:700;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .3s var(--ease);
+}
+.icon-btn.hidden-mobile{ display:none; }
+@media (min-width:640px){ .icon-btn.hidden-mobile{ display:inline-flex; } }
+
+.mobile-toggle{
+  background:none; border:none; color:var(--ivory);
+  width:38px; height:38px;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+
+@media (min-width:960px){
+  .nav__links{ display:flex; }
+  .mobile-toggle{ display:none; }
+}
+
+.mobile-menu{
+  position:fixed; inset:0 0 0 auto;
+  width:min(320px,84vw);
+  height:100vh;
+  background:var(--onyx-2);
+  border-left:1px solid var(--line);
+  z-index:200;
+  padding:28px 26px;
+  transform:translateX(100%);
+  transition:transform .4s var(--ease);
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.mobile-menu.is-open{ transform:translateX(0); }
+.mobile-menu__top{ display:flex; justify-content:space-between; align-items:center; }
+.mobile-menu__links{ display:flex; flex-direction:column; gap:22px; font-size:1rem; font-weight:600; letter-spacing:.06em; }
+.mobile-menu__links a{ display:flex; justify-content:space-between; align-items:center; color:var(--ivory); }
+.mobile-menu__links a:hover{ color:var(--gold-bright); }
+.scrim{
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:190; opacity:0; visibility:hidden; transition:opacity .35s;
+}
+.scrim.is-open{ opacity:1; visibility:visible; }
+
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero__bg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+}
+.hero__scrim{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,11,10,.35) 0%, rgba(11,11,10,.35) 40%, rgba(11,11,10,.96) 92%),
+    linear-gradient(90deg, rgba(11,11,10,.92) 0%, rgba(11,11,10,.35) 46%, rgba(11,11,10,.15) 100%);
+}
+.hero__watermark{
+  position:absolute;
+  left:-.05em; top:.42em;
+  font-family:var(--font-display);
+  font-size:clamp(6rem,19vw,15rem);
+  letter-spacing:.02em;
+  color:var(--ivory);
+  opacity:.05;
+  line-height:1;
+  pointer-events:none;
+  white-space:nowrap;
+}
+.hero__content{
+  position:relative;
+  z-index:2;
+  padding:180px 0 72px;
+  max-width:680px;
+}
+.hero__title{
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:clamp(2.3rem,6vw,4.2rem);
+  line-height:1.05;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.hero__title em{
+  font-style:normal;
+  color:var(--gold-bright);
+}
+.hero__subtitle{
+  font-size:1.05rem;
+  color:var(--stone);
+  max-width:460px;
+  margin-bottom:36px;
+}
+.hero__actions{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-bottom:56px; }
+.hero__meta{
+  display:flex; gap:40px;
+  font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--stone);
+}
+.hero__meta b{ display:block; color:var(--ivory); font-family:var(--font-head); font-size:1rem; letter-spacing:0; text-transform:none; margin-bottom:2px; }
+
+.scroll-cue{
+  position:absolute; right:40px; bottom:28px; z-index:2;
+  display:none;
+  align-items:center; gap:12px;
+  font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone);
+}
+.scroll-cue__line{ width:1px; height:46px; background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
+.scroll-cue__line::after{
+  content:''; position:absolute; left:0; top:-100%; width:100%; height:100%;
+  background:var(--gold-bright);
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{ 0%{top:-100%;} 60%{top:100%;} 100%{top:100%;} }
+@media (min-width:860px){ .scroll-cue{ display:flex; } }
+
+/* =================================================================
+   CATEGORIES
+   ================================================================= */
+.categories-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+@media (min-width:640px){ .categories-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1080px){ .categories-grid{ grid-template-columns:repeat(5,1fr); gap:20px; } }
+
+.category-card{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  aspect-ratio:3/4;
+  border:1px solid var(--line);
+  display:block;
+}
+.category-card__img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover;
+  transition:transform .7s var(--ease), filter .5s;
+  filter:grayscale(35%) brightness(.82);
+}
+.category-card:hover .category-card__img{ transform:scale(1.08); filter:grayscale(0%) brightness(.9); }
+.category-card__scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,11,10,0) 35%, rgba(11,11,10,.94) 100%);
+}
+.category-card__body{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:22px;
+}
+.category-card__name{
+  font-family:var(--font-head);
+  font-weight:700;
+  font-size:1.1rem;
+  letter-spacing:.02em;
+  margin-bottom:6px;
+}
+.category-card__desc{
+  font-size:.8rem;
+  color:var(--stone);
+  margin-bottom:14px;
+}
+.category-card__link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold-bright);
+}
+.category-card__link .icon-sm{ transition:transform .3s var(--ease); }
+.category-card:hover .category-card__link .icon-sm{ transform:translateX(4px); }
+
+/* =================================================================
+   MANIFESTO BAND
+   ================================================================= */
+.manifesto{
+  position:relative;
+  padding:140px 0;
+  text-align:center;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.manifesto__bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 20%;
+  filter:grayscale(100%);
+}
+.manifesto__scrim{ position:absolute; inset:0; background:rgba(11,11,10,.86); }
+.manifesto__inner{ position:relative; z-index:1; max-width:760px; margin-inline:auto; padding-inline:24px; }
+.manifesto__line{ width:1px; height:52px; background:linear-gradient(var(--gold),transparent); margin:0 auto 32px; }
+.manifesto__title{
+  font-family:var(--font-display);
+  font-size:clamp(2.4rem,7vw,5rem);
+  letter-spacing:.02em;
+  line-height:1.02;
+  color:var(--ivory);
+  margin-bottom:20px;
+}
+.manifesto__sub{ color:var(--stone); font-size:1.05rem; }
+
+/* =================================================================
+   PRODUCTS
+   ================================================================= */
+.products-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px 24px;
+}
+@media (min-width:640px){ .products-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1000px){ .products-grid{ grid-template-columns:repeat(3,1fr); } }
+
+.product-card{ position:relative; }
+.product-card__media{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  aspect-ratio:4/5;
+  background:var(--onyx-3);
+  border:1px solid var(--line);
+  transition:border-color .4s, box-shadow .4s;
+}
+.product-card:hover .product-card__media{
+  border-color:var(--gold);
+  box-shadow:0 14px 40px -14px rgba(198,161,91,.35);
+}
+.product-card__img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover;
+  transition:transform .7s var(--ease);
+}
+.product-card:hover .product-card__img{ transform:scale(1.06); }
+
+.wishlist-btn{
+  position:absolute; top:14px; right:14px; z-index:2;
+  width:36px; height:36px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(11,11,10,.55);
+  backdrop-filter:blur(6px);
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--ivory);
+  transition:color .25s, border-color .25s, transform .25s;
+}
+.wishlist-btn:hover{ border-color:var(--gold); }
+.wishlist-btn.is-active{ color:var(--gold-bright); border-color:var(--gold); }
+.wishlist-btn.is-active svg{ fill:var(--gold-bright); }
+.wishlist-btn.pulse{ animation:pulse .35s var(--ease); }
+@keyframes pulse{ 50%{ transform:scale(1.22); } }
+
+.product-card__overlay{
+  position:absolute; left:14px; right:14px; bottom:14px; z-index:2;
+  transform:translateY(14px);
+  opacity:0;
+  transition:transform .4s var(--ease), opacity .4s var(--ease);
+}
+.product-card:hover .product-card__overlay,
+.product-card:focus-within .product-card__overlay{ transform:translateY(0); opacity:1; }
+@media (hover:none){
+  .product-card__overlay{ position:static; transform:none; opacity:1; margin-top:12px; }
+}
+
+.add-to-cart{
+  width:100%;
+  padding:12px 16px;
+  border-radius:999px;
+  background:var(--gold);
+  color:var(--onyx);
+  border:none;
+  font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:background .25s, transform .2s;
+}
+.add-to-cart:hover{ background:var(--gold-bright); }
+.add-to-cart:active{ transform:scale(.97); }
+
+.product-card__body{ padding-top:16px; }
+.product-card__name{ font-family:var(--font-head); font-weight:600; font-size:1rem; margin-bottom:4px; }
+.product-card__desc{ font-size:.82rem; color:var(--stone); margin-bottom:10px; }
+.product-card__price{ font-family:var(--font-head); font-weight:700; color:var(--gold-bright); font-size:1.05rem; }
+
+/* =================================================================
+   FEATURES ("por que escolher")
+   ================================================================= */
+.features-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:36px;
+}
+@media (min-width:640px){ .features-grid{ grid-template-columns:repeat(2,1fr); gap:40px 32px; } }
+@media (min-width:1080px){ .features-grid{ grid-template-columns:repeat(4,1fr); } }
+
+.feature{ text-align:center; }
+.feature__icon{
+  width:56px; height:56px;
+  margin:0 auto 20px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  color:var(--gold-bright);
+  position:relative;
+}
+.feature__icon::after{
+  content:''; position:absolute; inset:-6px;
+  border:1px solid var(--line); border-radius:50%;
+}
+.feature__title{ font-family:var(--font-head); font-weight:700; font-size:1rem; margin-bottom:10px; }
+.feature__desc{ font-size:.86rem; color:var(--stone); max-width:230px; margin-inline:auto; }
+
+/* =================================================================
+   TESTIMONIALS
+   ================================================================= */
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+}
+@media (min-width:768px){ .testimonials-grid{ grid-template-columns:repeat(3,1fr); } }
+
+.testimonial{
+  background:var(--onyx-3);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:border-color .4s, transform .4s var(--ease);
+}
+.testimonial:hover{ border-color:var(--gold); transform:translateY(-4px); }
+.testimonial__stars{ display:flex; gap:4px; color:var(--gold); }
+.testimonial__stars .icon-sm{ width:14px; height:14px; }
+.testimonial__quote{ font-size:.95rem; color:var(--ivory); line-height:1.7; }
+.testimonial__author{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+.testimonial__avatar{
+  width:42px; height:42px; border-radius:50%;
+  background:var(--onyx-2);
+  border:1px solid var(--gold);
+  color:var(--gold-bright);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-head); font-weight:700; font-size:.85rem;
+}
+.testimonial__name{ font-weight:600; font-size:.88rem; }
+.testimonial__loc{ font-size:.75rem; color:var(--stone); }
+
+/* =================================================================
+   INSTAGRAM
+   ================================================================= */
+.instagram-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+}
+@media (min-width:640px){ .instagram-grid{ grid-template-columns:repeat(6,1fr); } }
+
+.instagram-item{
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+}
+.instagram-item img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  transition:transform .6s var(--ease), filter .4s;
+  filter:grayscale(60%) brightness(.8);
+}
+.instagram-item:hover img{ transform:scale(1.1); filter:grayscale(0%) brightness(.92); }
+.instagram-item__overlay{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(11,11,10,0);
+  color:var(--gold-bright);
+  opacity:0;
+  transition:opacity .35s, background .35s;
+}
+.instagram-item:hover .instagram-item__overlay{ opacity:1; background:rgba(11,11,10,.35); }
+
+.instagram-follow{ text-align:center; margin-top:40px; }
+
+/* =================================================================
+   FOOTER
+   ================================================================= */
+.footer{
+  background:#000;
+  border-top:1px dashed var(--line);
+  position:relative;
+  padding-top:80px;
+}
+.footer::before{
+  content:'';
+  position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  width:140px; height:2px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 14px);
+}
+.footer__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:44px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--line);
+}
+@media (min-width:768px){ .footer__grid{ grid-template-columns:1.4fr 1fr 1fr 1.4fr; gap:32px; } }
+
+.footer__logo{ font-family:var(--font-head); font-weight:800; font-size:1.3rem; letter-spacing:.14em; margin-bottom:14px; }
+.footer__logo span{ color:var(--gold); }
+.footer__tagline{ color:var(--stone); font-size:.88rem; max-width:280px; margin-bottom:22px; }
+.footer__social{ display:flex; gap:10px; }
+.footer__social a{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .25s, color .25s;
+}
+.footer__social a:hover{ border-color:var(--gold); color:var(--gold-bright); }
+
+.footer__title{ font-family:var(--font-head); font-weight:700; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:20px; }
+.footer__links{ display:flex; flex-direction:column; gap:12px; }
+.footer__links a{ font-size:.88rem; color:var(--stone); transition:color .25s; }
+.footer__links a:hover{ color:var(--ivory); }
+
+.footer__form{ display:flex; gap:0; margin-top:18px; border:1px solid var(--line); border-radius:999px; overflow:hidden; padding:4px; }
+.footer__form input{
+  flex:1; min-width:0; background:transparent; border:none; color:var(--ivory);
+  padding:10px 16px; font-family:inherit; font-size:.85rem;
+}
+.footer__form input:focus{ outline:none; }
+.footer__form input::placeholder{ color:var(--stone); }
+.footer__form button{
+  background:var(--gold); color:var(--onyx); border:none;
+  padding:10px 20px; border-radius:999px; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  transition:background .25s;
+}
+.footer__form button:hover{ background:var(--gold-bright); }
+.footer__note{ font-size:.72rem; color:var(--stone); margin-top:10px; }
+
+.footer__bottom{
+  display:flex; flex-direction:column; gap:10px;
+  align-items:center; justify-content:space-between;
+  padding:26px 0 32px;
+  font-size:.75rem; color:var(--stone);
+  text-align:center;
+}
+@media (min-width:640px){ .footer__bottom{ flex-direction:row; text-align:left; } }
+.footer__bottom a:hover{ color:var(--gold-bright); }
+
+/* =================================================================
+   REVEAL ON SCROLL
+   ================================================================= */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+.reveal-delay-1{ transition-delay:.1s; }
+.reveal-delay-2{ transition-delay:.2s; }
+.reveal-delay-3{ transition-delay:.3s; }
+.reveal-delay-4{ transition-delay:.4s; }
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .reveal{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar">
+  <div class="topbar__row">
+    <span>FRETE GRÁTIS ACIMA DE R$ 399</span>
+    <span>|</span>
+    <span class="topbar__links">
+      <a href="#">RASTREAR PEDIDO</a>
+      <a href="#">AJUDA</a>
+    </span>
+  </div>
+</div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="header" id="siteHeader">
+  <div class="container">
+    <nav class="nav">
+      <ul class="nav__links">
+        <li><a href="#cat-camisetas">CAMISETAS</a></li>
+        <li><a href="#cat-camisas">CAMISAS</a></li>
+        <li><a href="#cat-calcas">CALÇAS</a></li>
+      </ul>
+
+      <a href="#top" class="nav__logo">AM<span>·</span>STORE</a>
+
+      <ul class="nav__links">
+        <li><a href="#cat-tenis">TÊNIS</a></li>
+        <li><a href="#cat-acessorios">ACESSÓRIOS</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="icon-btn hidden-mobile" aria-label="Buscar">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn hidden-mobile" aria-label="Entrar na conta">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+        </button>
+        <button class="icon-btn" id="wishlistHeaderBtn" aria-label="Lista de desejos">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+        <button class="icon-btn" id="cartHeaderBtn" aria-label="Carrinho de compras">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<aside class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top">
+    <span class="nav__logo">AM<span>·</span>STORE</span>
+    <button class="icon-btn" id="mobileClose" aria-label="Fechar menu">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-menu__links">
+    <li><a href="#cat-camisetas">Camisetas <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+    <li><a href="#cat-camisas">Camisas <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+    <li><a href="#cat-calcas">Calças <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+    <li><a href="#cat-tenis">Tênis <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+    <li><a href="#cat-acessorios">Acessórios <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+    <li><a href="#produtos">Destaques <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></li>
+  </ul>
+</aside>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img class="hero__bg" src="https://images.unsplash.com/photo-1609751276867-64b6027287f9?auto=format&fit=crop&w=1800&q=80" alt="Modelo vestindo jaqueta de couro preta, estilo AM Store">
+  <div class="hero__scrim"></div>
+  <span class="hero__watermark" aria-hidden="true">AM STORE</span>
+
+  <div class="container hero__content">
+    <p class="eyebrow">COLEÇÃO 2026</p>
+    <h1 class="hero__title">Moda masculina<br>com <em>presença.</em></h1>
+    <p class="hero__subtitle">Peças selecionadas para homens que valorizam estilo, qualidade e personalidade.</p>
+    <div class="hero__actions">
+      <a href="#produtos" class="btn btn--primary">Ver coleção</a>
+      <a href="#sobre" class="btn btn--ghost">Conhecer a AM Store</a>
+    </div>
+    <div class="hero__meta">
+      <div><b>+180</b>peças selecionadas</div>
+      <div><b>100%</b>envio nacional</div>
+      <div><b>4.9/5</b>satisfação</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span>Role</span><div class="scroll-cue__line"></div></div>
+</section>
+
+<!-- ============ CATEGORIAS ============ -->
+<section class="section" id="categorias">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">CATEGORIAS</p>
+      <h2 class="section__title">Encontre o seu estilo</h2>
+    </div>
+
+    <div class="categories-grid">
+      <a href="#produtos" id="cat-camisetas" class="category-card reveal">
+        <img class="category-card__img" src="https://images.unsplash.com/photo-1571455786673-9d9d6c194f90?auto=format&fit=crop&w=700&q=80" alt="Camisetas AM Store">
+        <div class="category-card__scrim"></div>
+        <div class="category-card__body">
+          <div class="category-card__name">Camisetas</div>
+          <div class="category-card__desc">Conforto premium para o dia a dia</div>
+          <span class="category-card__link">Ver categoria <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#produtos" id="cat-camisas" class="category-card reveal reveal-delay-1">
+        <img class="category-card__img" src="https://images.unsplash.com/photo-1667284152861-36e03571486a?auto=format&fit=crop&w=700&q=80" alt="Camisas AM Store">
+        <div class="category-card__scrim"></div>
+        <div class="category-card__body">
+          <div class="category-card__name">Camisas</div>
+          <div class="category-card__desc">Elegância para qualquer ocasião</div>
+          <span class="category-card__link">Ver categoria <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#produtos" id="cat-calcas" class="category-card reveal reveal-delay-2">
+        <img class="category-card__img" src="https://images.unsplash.com/photo-1601393708831-166d1c933387?auto=format&fit=crop&w=700&q=80" alt="Calças AM Store">
+        <div class="category-card__scrim"></div>
+        <div class="category-card__body">
+          <div class="category-card__name">Calças</div>
+          <div class="category-card__desc">Caimento perfeito, do casual ao social</div>
+          <span class="category-card__link">Ver categoria <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#produtos" id="cat-tenis" class="category-card reveal reveal-delay-3">
+        <img class="category-card__img" src="https://images.unsplash.com/photo-1608229751021-ed4bd8677753?auto=format&fit=crop&w=700&q=80" alt="Tênis AM Store">
+        <div class="category-card__scrim"></div>
+        <div class="category-card__body">
+          <div class="category-card__name">Tênis</div>
+          <div class="category-card__desc">Estilo urbano com presença</div>
+          <span class="category-card__link">Ver categoria <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#produtos" id="cat-acessorios" class="category-card reveal reveal-delay-4">
+        <img class="category-card__img" src="https://images.unsplash.com/photo-1667284152843-024e91829ad3?auto=format&fit=crop&w=700&q=80" alt="Acessórios AM Store">
+        <div class="category-card__scrim"></div>
+        <div class="category-card__body">
+          <div class="category-card__name">Acessórios</div>
+          <div class="category-card__desc">Detalhes que fazem a diferença</div>
+          <span class="category-card__link">Ver categoria <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" id="sobre">
+  <img class="manifesto__bg" src="https://images.unsplash.com/photo-1633103826573-bece3c9a9a2c?auto=format&fit=crop&w=1800&q=80" alt="">
+  <div class="manifesto__scrim"></div>
+  <div class="manifesto__inner reveal">
+    <div class="manifesto__line"></div>
+    <p class="hero__subtitle" style="margin:0 auto 18px;color:var(--gold-bright);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;">AM Store</p>
+    <h2 class="manifesto__title">Vista sua<br>melhor versão.</h2>
+    <p class="manifesto__sub">Estilo que acompanha sua personalidade.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUTOS EM DESTAQUE ============ -->
+<section class="section" id="produtos">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">SELEÇÃO AM STORE</p>
+      <h2 class="section__title">Produtos em destaque</h2>
+    </div>
+
+    <div class="products-grid">
+
+      <article class="product-card reveal">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1571455786673-9d9d6c194f90?auto=format&fit=crop&w=800&q=80" alt="Camiseta Essential Black">
+          <button class="wishlist-btn" aria-label="Adicionar Camiseta Essential Black aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Camiseta Essential Black">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Camiseta Essential Black</div>
+          <div class="product-card__desc">100% algodão premium</div>
+          <div class="product-card__price">R$ 149,90</div>
+        </div>
+      </article>
+
+      <article class="product-card reveal reveal-delay-1">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1667284152861-36e03571486a?auto=format&fit=crop&w=800&q=80" alt="Camisa Social Slim">
+          <button class="wishlist-btn" aria-label="Adicionar Camisa Social Slim aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Camisa Social Slim">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Camisa Social Slim</div>
+          <div class="product-card__desc">Tricoline de alta gramatura</div>
+          <div class="product-card__price">R$ 249,90</div>
+        </div>
+      </article>
+
+      <article class="product-card reveal reveal-delay-2">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1602346693719-c1c05078679e?auto=format&fit=crop&w=800&q=80" alt="Jaqueta Bomber Couro">
+          <button class="wishlist-btn" aria-label="Adicionar Jaqueta Bomber Couro aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Jaqueta Bomber Couro">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Jaqueta Bomber Couro</div>
+          <div class="product-card__desc">Couro legítimo, forro interno</div>
+          <div class="product-card__price">R$ 589,90</div>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1535891169584-75bcaf12e964?auto=format&fit=crop&w=800&q=80" alt="Blazer Alfaiataria">
+          <button class="wishlist-btn" aria-label="Adicionar Blazer Alfaiataria aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Blazer Alfaiataria">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Blazer Alfaiataria</div>
+          <div class="product-card__desc">Corte slim, tecido italiano</div>
+          <div class="product-card__price">R$ 649,90</div>
+        </div>
+      </article>
+
+      <article class="product-card reveal reveal-delay-1">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1608229751021-ed4bd8677753?auto=format&fit=crop&w=800&q=80" alt="Tênis Court Signature">
+          <button class="wishlist-btn" aria-label="Adicionar Tênis Court Signature aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Tênis Court Signature">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Tênis Court Signature</div>
+          <div class="product-card__desc">Couro e camurça</div>
+          <div class="product-card__price">R$ 459,90</div>
+        </div>
+      </article>
+
+      <article class="product-card reveal reveal-delay-2">
+        <div class="product-card__media">
+          <img class="product-card__img" src="https://images.unsplash.com/photo-1667284152843-024e91829ad3?auto=format&fit=crop&w=800&q=80" alt="Cinto Couro Premium">
+          <button class="wishlist-btn" aria-label="Adicionar Cinto Couro Premium aos favoritos">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.3-9.3-8.7C1.2 8 2.6 4.6 6 4.6c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.4 0 4.8 3.4 3.3 6.7C19 15.7 12 20 12 20z"/></svg>
+          </button>
+          <div class="product-card__overlay">
+            <button class="add-to-cart" data-product="Cinto Couro Premium">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Cinto Couro Premium</div>
+          <div class="product-card__desc">Fivela metálica dourada</div>
+          <div class="product-card__price">R$ 189,90</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE ESCOLHER ============ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head center reveal">
+      <p class="eyebrow">AM STORE</p>
+      <h2 class="section__title">Por que escolher a AM Store</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature__title">Qualidade garantida</div>
+        <div class="feature__desc">Tecidos e acabamentos selecionados a dedo.</div>
+      </div>
+      <div class="feature reveal reveal-delay-1">
+        <div class="feature__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature__title">Envio para todo Brasil</div>
+        <div class="feature__desc">Entrega rápida e rastreável em todo o território nacional.</div>
+      </div>
+      <div class="feature reveal reveal-delay-2">
+        <div class="feature__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature__title">Atendimento personalizado</div>
+        <div class="feature__desc">Suporte dedicado antes, durante e depois da compra.</div>
+      </div>
+      <div class="feature reveal reveal-delay-3">
+        <div class="feature__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature__title">Produtos selecionados</div>
+        <div class="feature__desc">Curadoria exclusiva, sem excessos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section__head center reveal">
+      <p class="eyebrow">DEPOIMENTOS</p>
+      <h2 class="section__title">Quem veste, aprova</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial__stars">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial__quote">"A qualidade do tecido impressiona. Uso a camisa social pelo menos duas vezes por semana e ela mantém o caimento do primeiro dia."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">RM</div>
+          <div>
+            <div class="testimonial__name">Rafael M.</div>
+            <div class="testimonial__loc">São Paulo, SP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-1">
+        <div class="testimonial__stars">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial__quote">"Atendimento rápido e atencioso. Tive uma dúvida sobre o tamanho e me responderam em poucos minutos."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">DS</div>
+          <div>
+            <div class="testimonial__name">Diego S.</div>
+            <div class="testimonial__loc">Curitiba, PR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal reveal-delay-2">
+        <div class="testimonial__stars">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial__quote">"Comprei a jaqueta bomber e o acabamento é impecável — parece muito mais cara do que realmente é."</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">EC</div>
+          <div>
+            <div class="testimonial__name">Eduardo C.</div>
+            <div class="testimonial__loc">Rio de Janeiro, RJ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head center reveal">
+      <p class="eyebrow">INSTAGRAM</p>
+      <h2 class="section__title">@amstore</h2>
+    </div>
+  </div>
+
+  <div class="instagram-grid reveal">
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1571455786673-9d9d6c194f90?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1602346693719-c1c05078679e?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1667284152843-024e91829ad3?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1608229751021-ed4bd8677753?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1609751276887-e706d01b9da2?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+    <a class="instagram-item" href="#" aria-label="Ver publicação no Instagram">
+      <img src="https://images.unsplash.com/photo-1566070143658-523a24797109?auto=format&fit=crop&w=500&q=80" alt="">
+      <span class="instagram-item__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span>
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="instagram-follow reveal">
+      <a href="#" class="btn btn--ghost">Seguir no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">AM<span>·</span>STORE</div>
+        <p class="footer__tagline">Moda masculina para quem busca presença e autenticidade.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="AM Store no Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Falar no WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer__title">Institucional</div>
+        <ul class="footer__links">
+          <li><a href="#">Sobre nós</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__title">Categorias</div>
+        <ul class="footer__links">
+          <li><a href="#cat-camisetas">Camisetas</a></li>
+          <li><a href="#cat-camisas">Camisas</a></li>
+          <li><a href="#cat-calcas">Calças</a></li>
+          <li><a href="#cat-tenis">Tênis</a></li>
+          <li><a href="#cat-acessorios">Acessórios</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__title">Fique por dentro</div>
+        <p class="footer__tagline" style="margin-bottom:0;">Novidades, lançamentos e ofertas exclusivas direto no seu e-mail.</p>
+        <form class="footer__form" onsubmit="return false;">
+          <input type="email" placeholder="Seu e-mail" required aria-label="Seu e-mail">
+          <button type="submit">Inscrever</button>
+        </form>
+        <p class="footer__note">Ao se inscrever, você concorda com nossa política de privacidade.</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 AM Store. Todos os direitos reservados.</span>
+      <span>Site desenvolvido por <a href="#">LucasDev</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- header scroll state ----------
+  var header = document.getElementById('siteHeader');
+  function onScroll(){
+    if(window.scrollY > 12){ header.classList.add('is-scrolled'); }
+    else{ header.classList.remove('is-scrolled'); }
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // ---------- mobile menu ----------
+  var toggle = document.getElementById('mobileToggle');
+  var closeBtn = document.getElementById('mobileClose');
+  var menu = document.getElementById('mobileMenu');
+  var scrim = document.getElementById('scrim');
+
+  function openMenu(){
+    menu.classList.add('is-open');
+    scrim.classList.add('is-open');
+    toggle.setAttribute('aria-expanded','true');
+  }
+  function closeMenu(){
+    menu.classList.remove('is-open');
+    scrim.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  scrim.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // ---------- scroll reveal ----------
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.14, rootMargin:'0px 0px -60px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // ---------- cart + wishlist counters ----------
+  var cartCountEl = document.getElementById('cartCount');
+  var wishlistCountEl = document.getElementById('wishlistCount');
+  var cartCount = 0;
+  var wishlistCount = 0;
+
+  document.querySelectorAll('.add-to-cart').forEach(function(btn){
+    var originalHTML = btn.innerHTML;
+    btn.addEventListener('click', function(){
+      cartCount++;
+      cartCountEl.textContent = cartCount;
+      cartCountEl.style.transform = 'scale(1.35)';
+      setTimeout(function(){ cartCountEl.style.transform = 'scale(1)'; }, 220);
+
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Adicionado';
+      btn.disabled = true;
+      setTimeout(function(){
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+      }, 1600);
+    });
+  });
+
+  document.querySelectorAll('.wishlist-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var active = btn.classList.toggle('is-active');
+      wishlistCount += active ? 1 : -1;
+      wishlistCountEl.textContent = Math.max(wishlistCount,0);
+      btn.classList.add('pulse');
+      setTimeout(function(){ btn.classList.remove('pulse'); }, 350);
+    });
+  });
+
+  document.getElementById('wishlistHeaderBtn').addEventListener('click', function(){
+    document.getElementById('produtos').scrollIntoView({ behavior:'smooth' });
+  });
+  document.getElementById('cartHeaderBtn').addEventListener('click', function(){
+    document.getElementById('produtos').scrollIntoView({ behavior:'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

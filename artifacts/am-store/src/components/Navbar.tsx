@@ -18,11 +18,10 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Coleção', href: '#colecao' },
-    { name: 'Categorias', href: '#categorias' },
-    { name: 'Destaques', href: '#destaques' },
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Contato', href: '#contato' },
+    { name: 'Início', href: '/' },
+    { name: 'Coleção', href: '/colecao' },
+    { name: 'Sobre', href: '/sobre' },
+    { name: 'Contato', href: '/contato' },
   ];
 
   return (
@@ -43,13 +42,13 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
-            <a 
+            <Link 
               key={link.name} 
               href={link.href}
               className="text-sm font-sans tracking-widest text-white/70 hover:text-primary transition-colors uppercase"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -90,17 +89,20 @@ export function Navbar() {
             
             <nav className="flex flex-col items-center space-y-8">
               {navLinks.map((link, i) => (
-                <motion.a
+                <Link
                   key={link.name}
                   href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 + 0.2 }}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl font-display tracking-widest text-white hover:text-primary transition-colors"
                 >
-                  {link.name}
-                </motion.a>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 + 0.2 }}
+                    className="text-2xl font-display tracking-widest text-white hover:text-primary transition-colors cursor-pointer"
+                  >
+                    {link.name}
+                  </motion.span>
+                </Link>
               ))}
             </nav>
           </motion.div>
